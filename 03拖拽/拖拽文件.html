@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="keywords" content="关键词">
+    <meta name="description" content="描述">
+    <meta name="author" content="">
+    <style>
+        body{font-family: "Microsoft YaHei",serif;}
+        body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+        ol,ul,li{margin:0;padding:0;list-style:none;}
+        img{border:none;}
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+        #wrap {
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div id="box" draggable="true"></div>
+    <div id="wrap"></div>
+    <script>
+        let oBox = document.getElementById('box');
+        let oWrap = document.getElementById('wrap');
+        oBox.ondragstart = function (ev) {
+            //火狐要写setData
+            ev.dataTransfer.setData('key', 'a');
+        }
+        oWrap.ondragover = function (ev) {
+            ev.preventDefault();
+            //ev.stopPropagation();
+            //return false
+        }
+        //oWrap.ondragend
+        oWrap.addEventListener('drop', function (ev) {
+            //file对象
+            console.log(ev.dataTransfer.files);
+            let file = ev.dataTransfer.files.item(0);
+            let f = new FileReader();
+            //读取文件
+            f.readAsDataURL(file);
+            f.onload = function () {
+                let img = new Image();
+                img.src = this.result;
+                oWrap.appendChild(img);
+            }
+            this.style.background = 'red';
+            ev.preventDefault();
+            //e.stopPropagation();
+            //return false
+        })
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

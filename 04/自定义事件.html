@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+
+        <script>
+            let oWrap = document.getElementById('wrap');
+            oWrap.addEventListener('nihao',function () {
+                console.log('你好');
+            });
+            //一  KeyboardEvent MountEvent
+            /*let evt = document.createEvent('KeyboardEvent');
+            //1.事件名 2.是否冒泡 3.默认事件
+            evt.initEvent('nihao', false, false);
+            oWrap.dispatchEvent(evt);*/
+
+            let cus = new CustomEvent('nihao',{
+                detail: {
+                    goudan: 123
+                },
+                bubbles: false, //冒泡
+                cancelable: false//默认
+            })
+            oWrap.dispatchEvent(cus);
+
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+        </style>
+    </head>
+    <body>
+        <!--video标签和canvas能显示-->
+        <div id="wrap"></div>
+        <video src=""></video>
+        <script>
+
+            //navigator 调用设备的功能
+            //1.调用摄像头 或 音频
+            //2.调用成功之后
+            //3.调用失败
+            //本地和https才能用摄像头拍摄
+            //旧方式
+            let video = document.getElementsByTagName('video')[0];
+            /*window.navigator.getUserMedia({video: true}, function (stream) {
+                video.srcObject = stream;
+                video.play();
+            },function () {
+
+            })*/
+            //新方式
+            window.navigator.mediaDevices.getUserMedia({video: true})
+                .then(function (stream) {
+                    video.srcObject = stream;
+                    video.play();
+                })
+                .catch();
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

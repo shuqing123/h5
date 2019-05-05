@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <button>点击</button>
+        </div>
+
+        <script>
+            //h5路由
+            let oBtn = document.querySelector('#wrap button');
+            oBtn.onclick = function () {
+                //1.要传递的内容 2.-- 3.路径
+                //window.history.pushState('456', '李四', '/login')
+                window.history.replaceState('456', '李四', '/reg')
+            }
+            //监听前进 后退按钮
+            window.onpopstate = function (ev) {
+                console.log(ev);
+            }
+            //刷新  可以负数后退 和 正数前进
+            window.history.go(0);
+            window.history.back();//后退一步
+            window.history.forward();//前进一步
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

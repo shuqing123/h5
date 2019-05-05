@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+            #wrap {
+                width: 200px;
+                height: 200px;
+                background-color: pink;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+
+        <script>
+            let oWrap = document.getElementById('wrap');
+
+            oWrap.ondragover = function (ev) {
+                // for (let i = 0; i<file.Lis)
+
+                ev.preventDefault();
+            }
+            oWrap.ondrop = function (ev) {
+                let file = ev.dataTransfer.files.item(0);
+                console.log(file);
+                for (let i = 0; i < ev.dataTransfer.files.length ;i++){
+                    let form = new FormData();
+                    form.append('file',file);
+                    fetch('http://localhost:7777/upload', {
+                        method: 'post',
+                        body: form
+                    }).then();
+                    ev.preventDefault();
+                }
+
+            }
+            /*fetch('http://localhost:7777')
+                .then()*/
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

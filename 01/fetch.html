@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+
+        <script>
+            //基本用法  参数1.url 2额外选项
+
+            /*fetch("http://localhost:7777/?a=1")
+                .then(res=>res.text())//格式化成json,text
+                .then(data=>console.log(data));*/
+            //推荐模拟提交表单的方式进行post提交
+            let form = new FormData();
+            form.append('dan', '好吃');
+            //fetch跨域的时候默认不发送cookie
+            fetch("http://localhost:7777/p",{
+                method: "post",
+                body: 'gou=123',
+                credentials: 'include',//发cookies
+                //body: form,
+                headers: {
+                    'Content-type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .then(res=>res.json())//格式化成json,text
+                .then(data=>console.log(data));
+
+            function gou(res) {
+                console.log(res);
+            }
+        </script>
+        <!--<script src="http://localhost:7777/jsonp?cb=gou"></script>-->
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
